@@ -4,14 +4,13 @@ var mission  = autonomy.createMission();
 
 //circuit
 mission.takeoff()
-       .zero()       // Sets the current state as the reference
-       .altitude(1)  // Climb to altitude = 1 meter
-
-       .forward(1.7) 
-       .cw(50)  
+       .zero() 
+       .altitude(1)  
+       .forward(1.5) 
+       .cw(45)  
        .forward(0.8)
-       .altitude(2)
-       .ccw(50)
+       .altitude(1.5)
+       .ccw(45)
        .forward(1.5)
        .ccw(90)
        .forward(2.5)
