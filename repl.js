@@ -32,6 +32,11 @@ app.get('/', function(req, res) {
     util.pump(stream, res);
 });
 
+/*app.get('/', function(req, res) {
+    var stream = mu.compileAndRender('testsream.html');
+    util.pump(stream, res);
+});*/
+
 app.get('/connexion', function(req, res) {
     var stream = mu.compileAndRender('connexion.html');
     util.pump(stream, res);

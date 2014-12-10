@@ -1,0 +1,55 @@
+{
+  "Itineraire": [
+    {
+      "date": 1418156766430,
+      "actionList": [
+        {
+          "action": "Altitude",
+          "distance": "42"
+        },
+        {
+          "action2": "Avancer2",
+          "distance2": "42"
+        },
+        {
+          "action3": "Rotation3",
+          "distance3": "42"
+        }
+      ]
+    },
+    {
+      "date": 1418156800897,
+      "actionList": [
+        {
+          "action": "Altitude",
+          "distance": "1"
+        },
+        {
+          "action2": "Avancer2",
+          "distance2": "55"
+        },
+        {
+          "action3": "Rotation3",
+          "distance3": "44"
+        }
+      ]
+    },
+    {
+      "date": 1418157385661,
+      "actionList": [
+        {
+          "action": "Altitude",
+          "distance": "1"
+        },
+        {
+          "action2": "Avancer2",
+          "distance2": "55"
+        },
+        {
+          "action3": "Rotation3",
+          "distance3": "44"
+        }
+      ]
+    }
+  ]
+}

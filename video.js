@@ -1,5 +1,6 @@
 var date = Date.now();
 
+
 var arDrone = require('ar-drone');
 var PaVEParser = require('./lib/video/PaVEParser');
 var output = require('fs').createWriteStream('out/'+ date +'vid.h264');
