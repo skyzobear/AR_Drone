@@ -14,6 +14,9 @@ var express = require('express'),
     bodyParser = require('body-parser');
 var autonomy = require('ardrone-autonomy');
 
+//Dossier statique
+app.use('/assets', express.static('assets'));
+
 app.use(require('body-parser')());
 
 app.set('views', path.join(__dirname, 'views'));
@@ -30,6 +33,11 @@ app.get('/', function(req, res) {
     var stream = mu.compileAndRender('index.html');
     util.pump(stream, res);
 });
+
+/*app.get('/', function(req, res) {
+    var stream = mu.compileAndRender('testsream.html');
+    util.pump(stream, res);
+});*/
 
 app.get('/connexion', function(req, res) {
     var stream = mu.compileAndRender('connexion.html');
