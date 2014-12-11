@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap-theme.min.css"/>
         <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
+        <link type="text/css" rel="stylesheet" href="/assets/css/lightGallery.css"/>
         <link type="text/css" rel="stylesheet" href="/assets/css/style.css"/>
+
         <link href='http://fonts.googleapis.com/css?family=Lato:100,400,700,900' rel='stylesheet' type='text/css'>
     </head>
     <body>
@@ -15,7 +17,9 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12 col-xs-12">
-                            <img class="col-md-12 col-xs-12 img-responsive nopadding" src="/assets/img/Login/bg.png"/>
+                            <div class="col-md-12 col-xs-12 img-responsive nopadding" id="droneStream" style="width: 970px; height: 545px">
+                            </div>
+                            <!--<img class="col-md-12 col-xs-12 img-responsive nopadding" src="/assets/img/Login/bg.png"/>-->
                         </div>
                     </div>
                     <div class="row">
@@ -135,10 +139,138 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-xs-12 historique onglet-content">
-                                    
+                                    <div class="als-container" id="demo2">
+                                        <span class="als-prev"><img src="/assets/img/fleche-video.png" alt="prev" title="previous" /></span>
+                                        <div class="als-viewport">
+                                            <ul id="localVideo" class="als-wrapper">
+                                                <li class="als-item" data-html="#video1" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+
+                                                    <a href="#">
+                                                        <img src="/assets/img/video1.jpg" style="width:100%;float:left"><br>
+                                                        <p>Video 1</p>
+                                                        <p>01/12/14 Ã  19h</p>
+                                                    </a>
+
+                                                </li>
+                                                <li class="als-item" data-html="#video2" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+
+                                                    <a href="#">
+                                                        <img src="/assets/img/video1.jpg" style="width:100%;float:left"><br>
+                                                        <p>Video 2</p>
+                                                        <p>01/12/14 Ã  19h</p>
+                                                    </a>
+
+                                                </li>
+                                                <li class="als-item" data-html="#video3" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+
+                                                    <a href="#">
+                                                        <img src="/assets/img/video1.jpg" style="width:100%;float:left"><br>
+                                                        <p>Video 3</p>
+                                                        <p>01/12/14 Ã  19h</p>
+                                                    </a>
+
+                                                </li>
+                                                <li class="als-item" data-html="#video4" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+
+                                                    <a href="#">
+                                                        <img src="/assets/img/video1.jpg" style="width:100%;float:left"><br>
+                                                        <p>Video 4</p>
+                                                        <p>01/12/14 Ã  19h</p>
+                                                    </a>
+
+                                                </li>
+                                                <li class="als-item" data-html="#video5" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+                                                    <a href="#">
+                                                        <img src="/assets/img/video1.jpg" style="width:100%;float:left"><br>
+                                                        <p>Video 5</p>
+                                                        <p>01/12/14 Ã  19h</p>
+                                                    </a>
+                                                </li>
+                                                <li class="als-item" data-html="#video5" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+                                                    <a href="#">
+                                                        <img src="/assets/img/video1.jpg" style="width:100%;float:left"><br>
+                                                        <p>Video 5</p>
+                                                        <p>01/12/14 Ã  19h</p>
+                                                    </a>
+                                                </li>
+                                                <li class="als-item" data-html="#video5" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+                                                    <a href="#">
+                                                        <img src="/assets/img/video1.jpg" style="width:100%;float:left"><br>
+                                                        <p>Video 5</p>
+                                                        <p>01/12/14 Ã  19h</p>
+                                                    </a>
+                                                </li>
+                                                <li class="als-item" data-html="#video5" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+                                                    <a href="#">
+                                                        <img src="/assets/img/video1.jpg" style="width:100%;float:left"><br>
+                                                        <p>Video 5</p>
+                                                        <p>01/12/14 Ã  19h</p>
+                                                    </a>
+                                                </li>
+                                                <li class="als-item" data-html="#video5" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+                                                    <a href="#">
+                                                        <img src="/assets/img/video1.jpg" style="width:100%;float:left"><br>
+                                                        <p>Video 5</p>
+                                                        <p>01/12/14 Ã  19h</p>
+                                                    </a>
+                                                </li>
+                                                <li class="als-item" data-html="#video5" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+                                                    <a href="#">
+                                                        <img src="/assets/img/video1.jpg" style="width:100%;float:left"><br>
+                                                        <p>Video 5</p>
+                                                        <p>01/12/14 Ã  19h</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <span class="als-next"><img src="/assets/img/fleche-video.png" alt="next" title="next" /></span>
+                                    </div>
+                                    <div style="display:none;" id="video1">
+                                        <video width="100%" controls>
+                                            <source src="#" type="video/webm">
+                                            Your browser does not support HTML5 video.
+                                        </video>
+                                    </div>
+                                    <div style="display:none;" id="video2">
+                                        <video width="100%" controls>
+                                            <source src="#" type="video/webm">
+                                            Your browser does not support HTML5 video.
+                                        </video>
+                                    </div>
+                                    <div style="display:none;" id="video3">
+                                        <video width="100%" controls>
+                                            <source src="#" type="video/webm">
+                                            Your browser does not support HTML5 video.
+                                        </video>
+                                    </div>
+                                    <div style="display:none;" id="video4">
+                                        <video width="100%" controls>
+                                            <source src="#" type="video/webm">
+                                            Your browser does not support HTML5 video.
+                                        </video>
+                                    </div>
+                                    <div style="display:none;" id="video5">
+                                        <video width="100%" controls>
+                                            <source src="#" type="video/webm">
+                                            Your browser does not support HTML5 video.
+                                        </video>
+                                    </div>
+
+                                    <div style="display:none;" class="subhtml">
+                                        <div class='customHtml'><h4>Pigloo - Papa Pinguin</h4></div>
+                                    </div>
                                 </div>
                                 <div class="col-md-12 col-xs-12 parcours onglet-content">
-                                    
+                                    <div class="col-md-8 rubrique">
+                                        <div class="content col-md-12">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 rubrique">
+                                        <div class="content col-md-12">
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -147,8 +279,11 @@
             </div>
         </div>
         <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="/dronestream/nodecopter-client.js" charset="utf-8"></script>
+        <script src="/assets/js/lightGallery.js"></script>
+        <script src="/assets/js/jquery.als-1.7.min.js"></script>
         <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="/assets/js/script.js"></script>
         <script type="text/javascript" src="/assets/js/jQueryRotate.js"></script>
+        <script type="text/javascript" src="/assets/js/script.js"></script>
     </body>
 </html>
