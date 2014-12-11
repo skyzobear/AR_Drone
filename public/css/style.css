@@ -35,7 +35,7 @@ html, body {
     right: 30px;
     border: 1px solid #000;
     height: 1px;
-    width: 100px;
+    width: 70px;
 }
 .echelle:after, .echelle:before {
     display: inline-block;
