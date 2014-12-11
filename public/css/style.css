@@ -1,14 +1,64 @@
-#dronestream {
-    position: absolute;
-    z-index: -1;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    right: 0px;
-    overflow: hidden;
-}
-
-#dronestream canvas {
-    width: 100%;
+html, body {
     height: 100%;
+    width: 1280px;
+}
+#controleHaut input[data-role="boutonTypeClick"].active {
+    background: red;
+}
+#cadrillage {
+    position: relative;
+    left: 12.5%;
+    top: 10%;
+    height: 90%;
+    width: 75%;
+}
+#cadrillage .vertical, #cadrillage .horizontal {
+    transform-origin: 0% 0%;
+    position: relative;
+    transition: height 2s;
+    transition: width 2s;
+    background: #000;
+}
+#cadrillage .vertical {
+    transform: rotate(90deg);
+    height: 1px;
+    width: 0px;
+    top: 0;
+}
+#cadrillage .horizontal {
+    height: 1px;
+    width: 0px;
+}
+.echelle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    border: 1px solid #000;
+    height: 1px;
+    width: 100px;
+}
+.echelle:after, .echelle:before {
+    display: inline-block;
+    position: relative;
+    content: '0';
+    width: 1%;
+    left: 0px;
+}
+.echelle:after {
+    content: '1';
+    left: 95%;
+}
+.point {
+    width: 10px;
+    height: 10px;
+    background: #000;
+    position: absolute;
+    border-radius: 50%;
+    content: ' ';
+}
+.ligne {
+    position: absolute;
+    background: #000;
+    height: 1px;
+    transform-origin: 50% 50%;
 }
