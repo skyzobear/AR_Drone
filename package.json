@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "buffy": "0.0.4",
-    "simple-debug": "~1.1.1"
+    "simple-debug": "~1.1.1",
+    "ardrone-autonomy": "*"
   },
   "devDependencies": {
     "utest": "0.0.6",

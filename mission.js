@@ -3,9 +3,13 @@ var mission  = autonomy.createMission();
 
 
 //circuit
-mission.takeoff()
-       .zero() 
-       .altitude(1)  
+mission.takeoff();
+mission.zero();
+mission.go({x: 1, y:0});
+mission.cw(45);
+mission.zero();
+mission.go({x: 1, y:0});
+       /*.altitude(1)  
        .forward(1.5) 
        .cw(45)  
        .forward(0.8)
@@ -20,7 +24,8 @@ mission.takeoff()
        .cw(20)
        .go({x:0, y:0})
        .ccw(180)
-       .land();
+       .altitude(0.1)*/
+mission.land();
 
 mission.run(function (err, result) {
     if (err) {

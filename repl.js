@@ -1,5 +1,4 @@
-var arDrone = require('ar-drone'),
-    express = require('express'),
+var express = require('express'),
     app = express(),
     path = require('path'), 
     //On lance le serveur web
@@ -12,8 +11,8 @@ var arDrone = require('ar-drone'),
     util = require('util'),
     md5 = require('MD5'), 
     Utilisateur = require('./class/Utilisateur.js'),
-    bodyParser = require('body-parser'),
-    client  = arDrone.createClient();
+    bodyParser = require('body-parser');
+var autonomy = require('ardrone-autonomy');
 
 app.use(require('body-parser')());
 
@@ -47,25 +46,63 @@ app.post('/connexion', function(req, res) {
     
 });
 
+app.get('/puissant', function(req, res) {
+    var stream = mu.compileAndRender('powa.html');
+    util.pump(stream, res);
+});
+
+app.get('/script', function(req, res) {
+    res.sendFile(__dirname+'/public/javascript/script.js');
+});
+app.get('/point', function(req, res) {
+    res.sendFile(__dirname+'/public/javascript/Point.js');
+});
+app.get('/style', function(req, res) {
+    res.sendFile(__dirname+'/public/css/style.css');
+});
+app.get('/jquery', function(req, res) {
+    res.sendFile(__dirname+'/public/javascript/jquery.js');
+});
+
+app.post('/drone', function(req, res) {
+    var mission  = autonomy.createMission();
+    var actions = req.param('actions'),
+        temp,
+        action,
+        x = 0,
+        y = 0;;
+    mission.takeoff();
+    mission.zero();
+    console.log(actions);
+    for(temp in actions) {
+        action = actions[temp];
+        
+        if(action.angle !== 0) {
+            if(action.contreHoraire) {
+                mission.cw(Number(action.angle));
+            }
+            else {
+                mission.ccw(Number(action.angle));
+            }
+        }
+        mission.zero();
+        mission.go({x:1, y: 0});
+    }
+    mission.land();
+    mission.run(function (err, result) {
+        if (err) {
+            console.trace("Oops, something bad happened: %s", err.message);
+            mission.client().stop();
+            mission.client().land();
+        } else {
+            console.log("Mission success!");
+            process.exit(0);
+        }
+    });
+    res.send('coucou');
+});
+
+
 server.listen(3000);
 app.listen(8080);
 
-
-/*
-client.land();
-client.takeoff(function() {
-    console.log(client);
-    client.stop();
-    client.land();
-});*/
-/*
-client.up(0.1);
-client.front(0.1);
-client.animateLeds('blinkOrange', 5, 2);
-
-setTimeout(function() {
-    client.animateLeds('blinkRed', 5, 2);
-    client.stop();
-    client.land();
-}, 3000);*/
-  
