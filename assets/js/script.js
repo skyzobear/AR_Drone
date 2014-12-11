@@ -2,10 +2,19 @@ $(document).ready(function() {
     //Chargement onglet informations
     $('.onglet-content.information').show();
     var socket = io.connect("http://localhost:3000");
-    console.log('oucou');
+
         socket.on("navdata", function(data){
-            console.log(data);
+            //console.log(data['demo']['altitude']);
+            console.log(data['demo']['rotation']);
+            $('.information .infos-altitude').html(data['demo']['altitude']+' m');
+            $('.information .infos-vitesse').html(data['demo']['xVelocity']+' m/s');
+            $('.information .infos-batterie').html(data['demo']['batteryPercentage']+'%');
+            $('.information .infos-inclinaison').html(data['demo']['rotation']['clockwise']+'°');
+            $('.information .infos-frontBack').html(data['demo']['rotation']['frontBack']+'°');
+            $('.information .infos-leftRight').html(data['demo']['rotation']['leftRight']+'°');
+
         });
+  
     //Lancement du stream
     new NodecopterStream(document.getElementById("droneStream"));
 
