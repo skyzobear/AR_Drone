@@ -13,6 +13,7 @@ var express = require('express'),
     Utilisateur = require('./class/Utilisateur.js'),
     bodyParser = require('body-parser');
 var autonomy = require('ardrone-autonomy');
+var mission = autonomy.createMission();
 
 //Dossier statique
 app.use('/assets', express.static('assets'));
@@ -108,6 +109,10 @@ app.post('/drone', function(req, res) {
         }
     });
     res.send('coucou');
+});
+io.emit('navdata', 'fkjfkf');
+mission.client().on('navdata', function(data) {
+    io.emit('navdata', data);
 });
 
 
