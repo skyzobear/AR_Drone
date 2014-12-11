@@ -5,7 +5,7 @@ $(document).ready(function() {
 
         socket.on("navdata", function(data){
             //console.log(data['demo']['altitude']);
-            console.log(data['demo']['rotation']);
+            console.log(data);
             $('.information .infos-altitude').html(data['demo']['altitude']+' m');
             $('.information .infos-vitesse').html(data['demo']['xVelocity']+' m/s');
             $('.information .infos-batterie').html(data['demo']['batteryPercentage']+'%');
