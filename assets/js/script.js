@@ -3,7 +3,7 @@ $(document).ready(function() {
     $('.onglet-content.information').show();
 
     //Lancement du stream
-//    new NodecopterStream(document.getElementById("droneStream"));
+    new NodecopterStream(document.getElementById("droneStream"));
 
     //Changement de background sur la batterie
     var batteryValue = $.trim($('.batterie .infos').html());
