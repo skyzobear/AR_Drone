@@ -1,7 +1,11 @@
 $(document).ready(function() {
     //Chargement onglet informations
     $('.onglet-content.information').show();
-
+    var socket = io.connect("http://localhost:3000");
+    console.log('oucou');
+        socket.on("navdata", function(data){
+            console.log(data);
+        });
     //Lancement du stream
     new NodecopterStream(document.getElementById("droneStream"));
 
