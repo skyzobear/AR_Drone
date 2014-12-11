@@ -79,7 +79,7 @@ form input[type="submit"] {
 }
 
 .connexion form input[type="submit"] {
-     margin-top: 10px;
+    margin-top: 10px;
     height: 35px;
 }
 
@@ -108,9 +108,13 @@ form input[type="submit"] {
     color: #FFF;
 }
 
+.backoffice .dashboard .onglet-content {
+    display: none;
+}
+
 .backoffice .dashboard .rubrique {
     padding: 0;
-     height: 100%;
+    height: 100%;
     padding-right: 2px;
 }
 
@@ -297,3 +301,98 @@ form input[type="submit"] {
 .backoffice .zoom img {
     margin-right: 5px;
 }
+
+/*VIDEOS*/
+
+#localVideo #lightGallery-action {
+    position: static;
+}
+#localVideo #lightGallery-action a {
+    margin-top: -14px !important;
+    position: absolute;
+    top: 50%;
+    z-index: 9999999;
+    background-color: transparent;
+    font-size: 28px
+}
+#localVideo #lightGallery-action a#lightGallery-prev {
+    left: 17px;
+}
+#localVideo #lightGallery-action a#lightGallery-next {
+    right: 17px;
+}
+#localVideo img{
+    width:15%;
+    float:left;
+    padding: 15px;
+    padding-bottom: 7px;    
+}
+
+#localVideo .videos p{
+    font-size:12px;
+    color:#fff;
+    text-align: center;
+    margin: 0;
+}
+.als-container {
+    position: relative;
+    width: 100%;
+    margin: 0px auto;
+    z-index: 0;
+}
+
+.als-viewport {
+    position: relative;
+    overflow: hidden;
+    margin: 0px auto;
+}
+
+.als-wrapper {
+    position: relative;
+    list-style: none;
+}
+
+.als-item {
+    position: relative;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    float: left;
+}
+
+.als-prev, .als-next {
+    position: absolute;
+    cursor: pointer;
+    clear: both;
+}    
+#demo2 {
+    margin: 40px auto;
+}
+
+#demo2 .als-item {
+    margin: 0px 5px;
+    padding: 4px 0px;
+    min-height: 120px;
+    min-width: 100px;
+    text-align: center;
+}
+
+#demo2 .als-item img {
+    display: block;
+    margin: 0 auto;
+    vertical-align: middle;
+    width:150px;
+}
+
+#demo2 .als-prev, #demo2 .als-next {
+    top: 40px;
+}
+
+#demo2 .als-prev {
+    left: 200px;
+}
+
+#demo2 .als-next {
+    right: 200px;
+}                                                                       
+/*Fin VIDEOS */

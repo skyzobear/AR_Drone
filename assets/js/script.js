@@ -1,4 +1,10 @@
 $(document).ready(function() {
+    //Chargement onglet informations
+    $('.onglet-content.information').show();
+
+    //Lancement du stream
+//    new NodecopterStream(document.getElementById("droneStream"));
+
     //Changement de background sur la batterie
     var batteryValue = $.trim($('.batterie .infos').html());
     if (batteryValue <= '40%') {
@@ -40,6 +46,23 @@ $(document).ready(function() {
                 // $(this).stop().animate({opacity:'1'},{duration:1000})
                 $(this).stop().rotate({animateTo: 0, duration: 1000})
             });
+    $("#localVideo").lightGallery({
+        thumbnail: false,
+        addClass: 'localVideo'
+    });
+
+    $("#demo2").als({
+        visible_items: 4,
+        scrolling_items: 2,
+        orientation: "horizontal",
+        circular: "yes",
+        autoscroll: "no",
+        interval: 5000,
+        speed: 500,
+        easing: "linear",
+        direction: "right",
+        start_from: 0
+    });
 });
 
 function getUpDownOnglets() {
@@ -71,11 +94,11 @@ function changeOnglet(next) {
     $('.backoffice .action').animate({
         bottom: '185px'
     }, 400);
+    $('.onglet-content').fadeOut();
     $('.backoffice .dashboard').slideDown();
     $('.backoffice .arrow img').attr('src', '/assets/img/backoffice/arrow.png');
     $('.onglets .single').removeClass('active');
     $('.onglets .single').addClass('inactive');
-    $('.onglet-content').fadeOut();
     $('.onglet-content.' + next).fadeIn();
     $('.onglets .single.' + next).removeClass('inactive');
     $('.onglets .single.' + next).addClass('active');
