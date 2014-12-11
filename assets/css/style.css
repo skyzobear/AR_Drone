@@ -1,0 +1,299 @@
+/************* GENERAL **********/
+html, body {
+    height: 100%;
+    font-family: 'Lato';
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    height: 100%;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 970px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.nopadding {
+    padding: 0;
+}
+
+.nomargin {
+    margin: 0;
+}
+
+/*FORMULAIRE*/
+form input {
+    border: 1px solid #8e8e8e;
+    color: #8e8e8e;
+    font-style: italic; 
+}
+
+form input[type="submit"] {
+    font-style: normal;
+    background-color: #f7751c;
+    color: #FFF;
+    border: none;
+    font-weight: 700;
+}
+
+/********** CONNEXION ************/
+.connexion .background-login {
+    height: 100%;
+    background: url('../img/Login/bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+}
+
+.connexion .logo {
+    position: absolute;
+    margin: 10px;
+    top:0;
+}
+
+.connexion .connexion {
+    margin-top: 10%;
+    background: url('../img/Login/hexa.png');
+    background-size: 100% 100%;
+    display: table;
+    background-repeat: no-repeat;
+    height: 500px;
+    color: #EF774F;
+    text-align: center;
+    padding-top: 12%;
+}
+
+.connexion .connexion h1 {
+    margin-bottom: 50px;
+}
+
+.connexion form input {
+    margin-bottom: 20px;
+    height: 45px;
+}
+
+.connexion form input[type="submit"] {
+     margin-top: 10px;
+    height: 35px;
+}
+
+/********* BACK OFFICE **********/
+.backoffice h2 {
+    font-size: 12px;
+    background-color: rgba(256,256,256,0.2);
+    border-radius: 12px;
+    font-weight: 400;
+    padding: 6px 3px;
+    margin-top: 13px;
+}
+
+.backoffice .video{
+    height: 100%;
+    position: fixed;
+    z-index: 500;
+}
+
+.backoffice .dashboard{
+    z-index: 800;
+    position: absolute;
+    bottom: 0;
+    height: 179px;
+    background-color: rgba(0,0,0,0.2);
+    color: #FFF;
+}
+
+.backoffice .dashboard .rubrique {
+    padding: 0;
+     height: 100%;
+    padding-right: 2px;
+}
+
+.backoffice .dashboard .rubrique .content {
+    height: 179px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.6);
+    position: relative;
+}
+
+.backoffice .dashboard .rubrique .content .infos {
+    font-size: 30px;
+    position: absolute;
+    font-family: "Arial Narrow", Arial, sans-serif;
+    left: 32px;
+    bottom: 5px;
+}
+
+.backoffice .dashboard .rubrique .content .infos .big {
+    font-size: 70px;
+}
+
+
+/*VITESSE*/
+.backoffice .dashboard .rubrique .speed .global-line{
+    width: 100px;
+    height: 1px;
+    background-color: #FFF;
+    position: absolute;
+    left: 20px;
+    top: 60px;
+}
+
+.backoffice .dashboard .rubrique .speed .global-line .line {
+    height: 3px;
+    background-color: #EF774F;
+    position: absolute;
+    bottom: 0px;
+    top: -1px;
+}
+
+.backoffice .dashboard .rubrique .speed .global-line .cursor {
+    height: 7px;
+    width: 5px;
+    background-color: #EF774F;
+    position: absolute;
+    top: -2px;
+}
+
+/*ALTITUDE*/
+.backoffice .dashboard .rubrique .altitude .global-line{
+    width: 1px;
+    height: 100px;
+    background-color: #FFF;
+    position: absolute;
+    bottom: 20px;
+}
+
+.backoffice .dashboard .rubrique .altitude .global-line .line {
+    width: 3px;
+    background-color: #EF774F;
+    position: absolute;
+    bottom: 0px;
+    left: -1px;
+}
+
+.backoffice .dashboard .rubrique .altitude .global-line .cursor {
+    height: 4px;
+    width: 7px;
+    background-color: #EF774F;
+    position: absolute;
+    left: -3px;
+}
+/*BATTERIE*/
+.backoffice .dashboard .rubrique .batterie, 
+.backoffice .dashboard .rubrique .distance {
+    height: 89px;
+}
+
+.backoffice .dashboard .rubrique .distance h2{
+    margin-left: 2px;
+}
+
+.backoffice .dashboard .rubrique .batterie .infos, 
+.backoffice .dashboard .rubrique .distance .infos {
+    left: 50px;
+}
+
+/*INCLINAISON*/
+.backoffice .dashboard .rubrique.inclinaison .infos {
+    top: 97px;
+    font-size: 25px;
+    right: 30px;
+}
+
+.backoffice .dashboard .rubrique.inclinaison #fly2,
+.backoffice .dashboard .rubrique.inclinaison #fly {
+    margin-top:-117px;
+    transform: rotate(-30deg);
+}
+/**** ONGLETS ****/
+.backoffice .onglets, 
+.backoffice .action {
+    position: absolute;
+    margin-bottom: 2px;
+    bottom: 179px;
+}
+
+.backoffice .onglets .single {
+    float: left;
+    padding : 11px 19px 9px 19px;
+    color: #FFF;
+    background-color: rgba(0,0,0,0.6);
+    margin-right: 2px;
+    border-top-left-radius: 7px;
+    cursor: pointer;
+    border-top-right-radius: 7px;
+}
+
+.backoffice .onglets .single.inactive:hover {
+    /*background-color: rgba(0,0,0,0.6);*/
+    opacity: 1;
+}
+
+.backoffice .onglets .single img {
+    padding-right: 10px;
+    font-size: 20px;
+    width: 30px;
+}
+
+.backoffice .onglets .single.inactive {
+    opacity: 0.6;
+    padding-bottom: 14px;
+    background-color: rgba(0,0,0,0.2);
+} 
+
+.backoffice .onglets .single.active.information {
+    border-bottom: 5px solid #EF774F;
+} 
+
+.backoffice .onglets .single.active.historique {
+    border-bottom: 5px solid #3181FF;
+} 
+
+.backoffice .onglets .single.active.parcours {
+    border-bottom: 5px solid #27A96D;
+} 
+
+/*BOUTONS ACTION*/
+.backoffice .action {
+    right: 20px;
+    bottom: 185px;
+}
+
+.backoffice .action img {
+    margin-right: 10px;
+}
+
+/*MAP*/
+.backoffice .map {
+    width: 210px;
+    height: 180px;
+    background-color: rgba(256,256,256,0.2);
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 800;
+}
+
+.backoffice .map:after {
+    content: url('../img/backoffice/corner.png');
+    bottom: -10px;
+    left: -5px;
+    position: absolute;
+}
+
+/*ZOOM*/
+.backoffice .zoom {
+    position: absolute;
+    top: 5px;
+    left: 25px;
+}
+
+.backoffice .zoom img {
+    margin-right: 5px;
+}
