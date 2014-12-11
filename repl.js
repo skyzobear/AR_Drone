@@ -15,6 +15,9 @@ var arDrone = require('ar-drone'),
     bodyParser = require('body-parser'),
     client  = arDrone.createClient();
 
+//Dossier statique
+app.use('/assets', express.static('assets'));
+
 app.use(require('body-parser')());
 
 app.set('views', path.join(__dirname, 'views'));
