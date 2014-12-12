@@ -1,14 +1,22 @@
 $(document).ready(function() {
     //Chargement onglet informations
     $('.onglet-content.information').show();
-    var socket = io.connect("http://localhost:3000");
+    var socket = io.connect("http://localhost:3000"),
+        duree = 0,
+        timeoutChrono;
 
         socket.on("navdata", function(data){
-            //console.log(data['demo']['altitude']);
-            console.log(data);
+            var batterie = $('.information .infos-batterie'),
+                niveau = data['demo']['batteryPercentage'];
             $('.information .infos-altitude').html(data['demo']['altitude']+' m');
             $('.information .infos-vitesse').html(data['demo']['xVelocity']+' m/s');
-            $('.information .infos-batterie').html(data['demo']['batteryPercentage']+'%');
+            if(niveau > 20) {
+                batterie.removeClass('danger');
+            }
+            else {
+                batterie.addClass('danger');
+            }
+            batterie.html(niveau+'%');
             $('.information .infos-inclinaison').html(data['demo']['rotation']['clockwise']+'°');
             $('.information .infos-frontBack').html(data['demo']['rotation']['frontBack']+'°');
             $('.information .infos-leftRight').html(data['demo']['rotation']['leftRight']+'°');
@@ -76,6 +84,30 @@ $(document).ready(function() {
         direction: "right",
         start_from: 0
     });
+    
+    $('#play').on('click', function() {
+        incrementationChrono();
+        socket.emit('lancementDrone', '1');
+    });
+    
+    $('#stop').on('click', function() {
+        duree = 0;
+        clearTimeout(timeout);
+        $('.distance .infos').html('0 s');
+        socket.emit('arretDrone', '1');
+    });
+    
+    function incrementationChrono() {
+        var minute = parseInt(duree / 60),
+            secondes = duree % 60,
+            chaine = secondes+' s';
+        duree++;
+        if(minute > 0) {
+            chaine = minute+' min '+chaine;
+        }
+        $('.distance .infos').html(chaine);
+        timeout = setTimeout(incrementationChrono, 1000);
+    }
 });
 
 function getUpDownOnglets() {

@@ -110,12 +110,18 @@ app.post('/drone', function(req, res) {
     });
     res.send('coucou');
 });
-io.emit('navdata', 'fkjfkf');
 mission.client().on('navdata', function(data) {
     io.emit('navdata', data);
+});
+io.on('connection', function(socket){
+    socket.on('lancementDrone', function(message) {
+        //Placer ici le lancement du drone les copains
+    });
+    socket.on('arretDrone', function(message) {
+        //Placer ici l'arret du drone
+    });
 });
 
 
 server.listen(3000);
 app.listen(8080);
-
