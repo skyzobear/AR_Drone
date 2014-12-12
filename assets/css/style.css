@@ -1,10 +1,29 @@
 /************* GENERAL **********/
+/***FONT***/
+@font-face {
+    font-family: 'Lato';
+    src: url(fonts/Lato-Bold.ttf);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url(fonts/Lato-Regular.ttf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url(fonts/ato-Thin.ttf);
+    font-weight: 400;
+}
 html, body {
     height: 100%;
     font-family: 'Lato';
     font-weight: 400;
     margin: 0;
     padding: 0;
+    background: url('../img/backoffice/bg.png');
 }
 
 .container-fluid {
@@ -14,6 +33,7 @@ html, body {
 .container {
     margin: 0 auto;
     padding: 0;
+    margin-top: 1%;
     max-width: 970px;
     height: 100%;
     overflow: hidden;
@@ -187,6 +207,50 @@ form input[type="submit"] {
     background-color: #EF774F;
     position: absolute;
     left: -3px;
+}
+
+/*** PARCOURS ***/
+/** Altitude **/
+.backoffice .dashboard .rubrique .content #slider-altitude {
+    top: 80px;
+}
+
+.backoffice .dashboard .rubrique .content #slider-rotation {
+    top: 150px;
+}
+
+
+.backoffice .dashboard .rubrique .content #slider-altitude .ui-state-default, 
+.backoffice .dashboard .rubrique .content #slider-rotation .ui-state-default {
+    background: #27A96D;
+    border-color: transparent;
+}
+
+.backoffice .dashboard .rubrique .content #slider-altitude .ui-slider-range,  
+.backoffice .dashboard .rubrique .content #slider-rotation .ui-slider-range { 
+    background: #ef2929; 
+}
+
+.backoffice .dashboard .parcours .subtitle-altitude{
+    top: 90px;
+    left: 60px;
+    position: absolute;
+}
+
+.backoffice .dashboard .parcours .infos-altitude {
+    top: 80px;
+    right: -50px;
+}
+
+.backoffice .dashboard .parcours .subtitle-rotation{
+    top: 176px;
+    left: 60px;
+    position: absolute;
+}
+
+.backoffice .dashboard .parcours .infos-rotation {
+    top: 161px;
+    right: -50px;
 }
 /*BATTERIE*/
 .backoffice .dashboard .rubrique .batterie, 
@@ -396,3 +460,83 @@ form input[type="submit"] {
     right: 200px;
 }                                                                       
 /*Fin VIDEOS */
+/*Fin VIDEOS */
+#droneStream canvas{
+    height: 545px !important;
+    width: 970px !important;
+}
+
+/*PARCOURS*/
+.parcours .plus{
+    left: 17px;
+    top: 5px;
+    position: absolute;
+    color: black;
+    }
+.parcours .moins{
+    left: 17px;
+    position: absolute;
+    top: 32px;
+    width: 22px;
+    color: black;
+}
+#controleHaut input[data-role="boutonTypeClick"].active {
+    background: red;
+}
+#cadrillage {
+    position: relative;
+    left: 5%;
+    height: 90%;
+    width: 80%;
+}
+#cadrillage .vertical, #cadrillage .horizontal {
+    transform-origin: 0% 0%;
+    position: relative;
+    transition: height 2s;
+    transition: width 2s;
+    background: #000;
+}
+#cadrillage .vertical {
+    transform: rotate(90deg);
+    height: 1px;
+    width: 0px;
+    top: 0;
+}
+#cadrillage .horizontal {
+    height: 1px;
+    width: 0px;
+}
+.echelle {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    border: 1px solid #FFF;
+    height: 1px;
+    width: 100px;
+}
+.echelle:after, .echelle:before {
+    display: inline-block;
+    position: relative;
+    content: '0';
+    width: 1%;
+    left: -49px;
+}
+.echelle:after {
+    content: '1';
+    left: 45%;
+}
+.point {
+    width: 10px;
+    height: 10px;
+    background: #2baa6e;
+    position: absolute;
+    border-radius: 50%;
+    content: ' ';
+    z-index: 4;
+}
+.ligne {
+    position: absolute;
+    background: white;
+    height: 1px;
+    transform-origin: 50% 50%;
+}

@@ -12,6 +12,7 @@ var express = require('express'),
     md5 = require('MD5'), 
     Utilisateur = require('./class/Utilisateur.js'),
     bodyParser = require('body-parser');
+    drone = require("./lib/server");
 var autonomy = require('ardrone-autonomy');
 var mission = autonomy.createMission();
 
@@ -23,6 +24,9 @@ app.use(require('body-parser')());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'mustache');
 
+app.get('/', function(req, res) {
+    require("fs").createReadStream(__dirname + "/views/index.html").pipe(res);
+});
 
 mu.root = __dirname + '/views';
 
@@ -123,5 +127,5 @@ io.on('connection', function(socket){
 });
 
 
-server.listen(3000);
-app.listen(8080);
+drone.listen(server);
+server.listen(8080);

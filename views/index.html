@@ -8,10 +8,21 @@
         <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
         <link type="text/css" rel="stylesheet" href="/assets/css/lightGallery.css"/>
         <link type="text/css" rel="stylesheet" href="/assets/css/style.css"/>
-
+        <link rel="stylesheet" href="/assets/css/jquery-ui.min.css">
+        <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+        <script src="/assets/js/socket.io.js"></script>
+        <script type="text/javascript" src="/assets/js/nodecopter-stream.js" charset="utf-8"></script>
+        <script type="text/javascript" src="/assets/js/nodecopter-client.js" charset="utf-8"></script>
+        <script src="/assets/js/jquery-ui.js"></script>
+        <script src="/assets/js/lightGallery.js"></script>
+        <script src="/assets/js/jquery.als-1.7.min.js"></script>
+        <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/assets/js/jQueryRotate.js"></script>
+        <script src="/assets/js/socket.io.js"></script>
+        <script type="text/javascript" src="/assets/js/script.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Lato:100,400,700,900' rel='stylesheet' type='text/css'>
     </head>
-    <body style="background:purple;">
+    <body>
         <div class="container backoffice">
             <div class="row">
                 <div class="col-md-12">
@@ -263,12 +274,31 @@
                                 <div class="col-md-12 col-xs-12 parcours onglet-content">
                                     <div class="col-md-8 rubrique">
                                         <div class="content col-md-12">
-
+                                            <div id="controleHaut">
+                                                <input class="plus" type="button" value="+" data-role="boutonTypeClick" data-type="1"/><br>
+                                                <input class="moins" type="button" value="-" data-role="boutonTypeClick" data-type="2"/>
+                                            </div>
+                                            <div id="cadrillage"></div>
+                                            <div class="echelle"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-4 rubrique">
                                         <div class="content col-md-12">
-
+                                            <h2 class="col-md-offset-2 col-md-7">
+                                                RENSEIGNEMENTS
+                                            </h2>
+                                            <div class="subtitle-altitude">Altitude</div>
+                                            <div class="infos infos-altitude">
+                                                0.00 m
+                                            </div>
+                                            <div class="subtitle-rotation">Rotation</div>
+                                            <div class="infos infos-rotation">
+                                                0.00 °
+                                            </div>
+                                            <div id="slider-altitude" class="col-md-8 col-md-offset-2">
+                                            </div>
+                                            <div id="slider-rotation" class="col-md-8 col-md-offset-2">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -278,14 +308,6 @@
                 </div>
             </div>
         </div>
-
-        <script src="/assets/js/socket.io.js"></script>
-        <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
-        
-        <script src="/assets/js/lightGallery.js"></script>
-        <script src="/assets/js/jquery.als-1.7.min.js"></script>
-        <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="/assets/js/jQueryRotate.js"></script>
-        <script type="text/javascript" src="/assets/js/script.js"></script>
+        <script src="/assets/js/point1.js"></script>
     </body>
 </html>
