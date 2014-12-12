@@ -90,6 +90,7 @@ $(document).ready(function() {
     $('#play').on('click', function() {
         incrementationChrono();
         socket.emit('lancementDrone', '1');
+        socket.emit('lancerVideo','1');
     });
 
     $('#stop').on('click', function() {
@@ -97,6 +98,7 @@ $(document).ready(function() {
         clearTimeout(timeout);
         $('.distance .infos').html('0 s');
         socket.emit('arretDrone', '1');
+        socket.emit('stopVideo');
     });
 
     function incrementationChrono() {

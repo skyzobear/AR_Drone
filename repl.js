@@ -11,10 +11,13 @@ var express = require('express'),
     util = require('util'),
     md5 = require('MD5'), 
     Utilisateur = require('./class/Utilisateur.js'),
-    bodyParser = require('body-parser');
-    drone = require("./lib/server");
-var autonomy = require('ardrone-autonomy');
-var mission = autonomy.createMission();
+    bodyParser = require('body-parser'),
+    drone = require("./lib/server"),
+    video = require('./video.js'),
+    autonomy = require('ardrone-autonomy'),
+    mission = autonomy.createMission();
+
+exports.lancerVideo = false;
 
 //Dossier statique
 app.use('/assets', express.static('assets'));
@@ -124,7 +127,17 @@ io.on('connection', function(socket){
     socket.on('arretDrone', function(message) {
         //Placer ici l'arret du drone
     });
+
+    socket.on('lancerVideo', function() {
+        video.lancerVideo = true;
+    });
+
+    socket.on('stopVideo', function() {
+        video.lancerVideo = 1;
+    });
 });
+
+
 
 
 drone.listen(server);
