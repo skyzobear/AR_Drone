@@ -1,8 +1,10 @@
-function Point(element, precedent) {
+function Point(element, precedent, altitude, angle) {
     this.element = element;
     this.precedent = precedent;
+    this.altitude = altitude;
+    this.angle = angle;
     this.suivant = null;
-    
+    console.log(this);
     this.ligne = null;
     
     //Ajout du listener
@@ -64,7 +66,6 @@ Point.prototype.getDistance = function() {
     if(this.suivant !== null) {
         var origine = Point.getOrigine(this.element),
             fin = Point.getOrigine(this.suivant);
-    
         return Point.getDistance(origine, fin);
     }
     return 0;
@@ -141,7 +142,7 @@ Point.envoie = function() {
         deplacements = {},
         distance, 
         ancienAngle = 90;
-    for(var i = 0; i < collection.length-1; i++) {
+    for(var i = 0; i < collection.length; i++) {
         var angleActuel = collection[i].getAngle(),
             distance = collection[i].getDistanceMetre(), 
             angle,
@@ -157,19 +158,13 @@ Point.envoie = function() {
             contreHoraire = true;
             angle = 360 - angle;
         }
-            deplacements[i] =   {
-                                    distance: distance,
-                                    angle: angle,
-                                    contreHoraire: contreHoraire
-                                };
+        deplacements[i] =   {
+                                distance: distance,
+                                rotation: collection[i].angle,
+                                altitude: collection[i].altitude,
+                                angle: angle,
+                                contreHoraire: contreHoraire
+                            };
     }
-    
-    $.ajax({
-        url: "/drone",
-        type: 'POST',
-        data: {actions: deplacements},
-        success: function(data) {
-            console.log(data);
-        }
-    });
+    return deplacements;
 };

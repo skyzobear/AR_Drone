@@ -119,6 +119,12 @@ form input[type="submit"] {
     z-index: 500;
 }
 
+.backoffice #shadow-dash {
+    height: 90px;
+    background: url('../img/backoffice/shadowdash.png');
+    position: absolute;
+}
+
 .backoffice .dashboard{
     z-index: 800;
     position: absolute;
@@ -175,6 +181,26 @@ form input[type="submit"] {
     bottom: 0px;
     top: -1px;
 }
+
+/* BATTERIE*/
+.danger {
+    background-color: rgba(199, 19, 56, 0.298039);
+}
+
+/** RESUME INFOS **/
+.backoffice .resume-info {
+    color: #FFF;
+    font-weight: 700;
+    position: absolute;
+    left: 30px;
+    top: 8px;
+}
+
+.backoffice .resume-info span {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
 
 .backoffice .dashboard .rubrique .speed .global-line .cursor {
     height: 7px;
@@ -327,6 +353,9 @@ form input[type="submit"] {
     border-bottom: 5px solid #27A96D;
 } 
 
+.backoffice .historique p {
+    margin-bottom: 0;
+}
 /*BOUTONS ACTION*/
 .backoffice .action {
     right: 20px;
@@ -414,6 +443,7 @@ form input[type="submit"] {
 .als-wrapper {
     position: relative;
     list-style: none;
+    margin: 0px auto;
 }
 
 .als-item {
@@ -429,15 +459,12 @@ form input[type="submit"] {
     cursor: pointer;
     clear: both;
 }    
-#demo2 {
-    margin: 40px auto;
-}
+
 
 #demo2 .als-item {
-    margin: 0px 5px;
-    padding: 4px 0px;
-    min-height: 120px;
-    min-width: 100px;
+    margin: 0px 30px;
+    min-height: 158px;
+    width:128px;
     text-align: center;
 }
 
@@ -445,7 +472,11 @@ form input[type="submit"] {
     display: block;
     margin: 0 auto;
     vertical-align: middle;
-    width:150px;
+    width:100%;
+}
+
+#demo2{
+    margin: 0px auto 0px auto;
 }
 
 #demo2 .als-prev, #demo2 .als-next {
@@ -453,36 +484,70 @@ form input[type="submit"] {
 }
 
 #demo2 .als-prev {
-    left: 200px;
+    left: 24px;
+    width: auto;
+    height: auto;
 }
 
 #demo2 .als-next {
-    right: 200px;
-}                                                                       
+    right: 24px;
+    width: auto;
+    height: auto;
+}
+
+
 /*Fin VIDEOS */
 /*Fin VIDEOS */
 #droneStream canvas{
     height: 545px !important;
     width: 970px !important;
+    background-image: url('../img/backoffice/bg-logo.png');
 }
 
 /*PARCOURS*/
 .parcours .plus{
     left: 17px;
-    top: 5px;
+    top: 11px;
     position: absolute;
     color: black;
-    }
+}
+
 .parcours .moins{
     left: 17px;
     position: absolute;
-    top: 32px;
+    top: 55px;
     width: 22px;
     color: black;
 }
-#controleHaut input[data-role="boutonTypeClick"].active {
-    background: red;
+
+#controleHaut .plus  {
+    width: 36px;
+    height: 36px;
+    background: url('../img/backoffice/plus-defaut.png')
 }
+
+#controleHaut .moins  {
+    width: 36px;
+    height: 36px;
+    background: url('../img/backoffice/moins-defaut.png')
+}
+
+#controleHaut .plus.active {
+    background: url('../img/backoffice/plus-select.png');
+}
+
+#controleHaut .moins.active {
+    background: url('../img/backoffice/moins-select.png');
+}
+
+#controleHaut .plus:hover {
+    background: url('../img/backoffice/plus-over.png');
+}
+
+#controleHaut .moins:hover {
+    background: url('../img/backoffice/moins-over.png');
+}
+
 #cadrillage {
     position: relative;
     left: 5%;
@@ -512,14 +577,14 @@ form input[type="submit"] {
     right: 30px;
     border: 1px solid #FFF;
     height: 1px;
-    width: 100px;
+    width: 50px;
 }
 .echelle:after, .echelle:before {
     display: inline-block;
     position: relative;
     content: '0';
     width: 1%;
-    left: -49px;
+    left: -35px;
 }
 .echelle:after {
     content: '1';

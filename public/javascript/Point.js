@@ -163,13 +163,5 @@ Point.envoie = function() {
                                     contreHoraire: contreHoraire
                                 };
     }
-    
-    $.ajax({
-        url: "/drone",
-        type: 'POST',
-        data: {actions: deplacements},
-        success: function(data) {
-            console.log(data);
-        }
-    });
+    return deplacements;
 };

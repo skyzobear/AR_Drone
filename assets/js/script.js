@@ -1,3 +1,5 @@
+var altitudeActuelle = 1,
+    angleActuel = 0;
 $(document).ready(function() {
     //Chargement onglet informations
     $('.onglet-content.information').show();
@@ -69,10 +71,6 @@ $(document).ready(function() {
                 // $(this).stop().animate({opacity:'1'},{duration:1000})
                 $(this).stop().rotate({animateTo: 0, duration: 1000})
             });
-    $("#localVideo").lightGallery({
-        thumbnail: false,
-        addClass: 'localVideo'
-    });
 
     $("#demo2").als({
         visible_items: 4,
@@ -88,9 +86,15 @@ $(document).ready(function() {
     });
 
     $('#play').on('click', function() {
+        html2canvas(document.querySelector('.parcours .content'), {
+            onrendered: function(canvas) {
+              var test = document.querySelector('.map').appendChild(canvas);
+              $(test).css('width', '100%');
+              $(test).css('height', '100%');
+            }
+          });
         incrementationChrono();
-        socket.emit('lancementDrone', '1');
-        socket.emit('lancerVideo','1');
+        socket.emit('lancementDrone', Point.envoie());
     });
 
     $('#stop').on('click', function() {
@@ -98,7 +102,6 @@ $(document).ready(function() {
         clearTimeout(timeout);
         $('.distance .infos').html('0 s');
         socket.emit('arretDrone', '1');
-        socket.emit('stopVideo');
     });
 
     function incrementationChrono() {
@@ -114,22 +117,24 @@ $(document).ready(function() {
     }
 
     //Slider parcours rotation et altitude
-    $("#slider-altitude").slider();
+    $("#slider-altitude").slider({value: 50});
+    $('.parcours .infos-altitude').html('1 m');
     $("#slider-rotation").slider();
 
     //Changement de valeur pour l'altitude
     $(".backoffice .dashboard .rubrique .content #slider-altitude .ui-state-default").mousemove(function() {
-//        console.log($(this));
         var left = $('#slider-altitude .ui-slider-handle.ui-state-default.ui-corner-all.ui-state-hover').position();
         var altitude = (left['left'] * 3) / 289;
-        $('.parcours .infos-altitude').html((Math.round(altitude * 100) / 100) + ' m');
+        altitudeActuelle = (Math.round(altitude * 100) / 100);
+        $('.parcours .infos-altitude').html(altitudeActuelle + ' m');
     });
     //Changement de valeur pour 9+çla rotation
     $(".backoffice .dashboard .rubrique .content #slider-rotation .ui-state-default").mousemove(function() {
 //        console.log($(this));
         var left = $('#slider-rotation .ui-slider-handle.ui-state-default.ui-corner-all.ui-state-hover').position();
         var rotation = (-360) + ((left['left'] * 720) / 192);
-        $('.parcours .infos-rotation').html((Math.round(rotation * 100) / 100) + ' °');
+        angleActuel = (Math.round(rotation * 100) / 100);
+        $('.parcours .infos-rotation').html(angleActuel + ' °');
     });
 
     //Agrandissement de la carte
@@ -148,6 +153,7 @@ $(document).ready(function() {
             height: '180px'
         });
     });
+    
 });
 
 function getUpDownOnglets() {
@@ -194,7 +200,7 @@ function changeOnglet(next) {
         //Type click = 2 : Enlever
 
         var echelle = document.querySelector('.echelle'),
-                unite = echelle.offsetWidth,
+                unite = $('.echelle').outerWidth(),
                 fenetre = document.querySelector('#cadrillage'),
                 positionCadrillage = {
             left: $('#cadrillage').offset().left,
@@ -205,7 +211,6 @@ function changeOnglet(next) {
             largeur: fenetre.offsetWidth
         };
         Point.echelle = unite;
-        console.log(Point.echelle);
         function getCentre(origine, fin, longueur, largeur) {
             return  {
                 x: ((origine.x + fin.x) / 2) - (longueur / 2),
@@ -240,11 +245,9 @@ function changeOnglet(next) {
         document.querySelector('#cadrillage').addEventListener('click', function(e) {
             if (window.typeClick === 1) {
                 var div = document.createElement('div'),
-                        index = window.collectionPoints.length - 1;
+                    index = window.collectionPoints.length - 1;
 
                 div.className = 'point';
-                console.log(e);
-                console.log($('#cadrillage').offset());
                 div.style.left = (e.clientX - 5 - $('#cadrillage').offset().left) + 'px';
                 div.style.top = (e.clientY - 5 - $('#cadrillage').offset().top) + 'px';
                 this.appendChild(div);
@@ -253,9 +256,7 @@ function changeOnglet(next) {
                     window.collectionPoints[index].setSuivant(div);
                 }
 
-
-
-                window.collectionPoints.push(new Point(div, window.collectionPoints[index]));
+                window.collectionPoints.push(new Point(div, window.collectionPoints[index], altitudeActuelle, angleActuel));
             }
         });
 

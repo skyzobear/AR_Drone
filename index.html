@@ -1,18 +1,289 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>Stream as module</title>
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap-theme.min.css"/>
+        <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
+        <link type="text/css" rel="stylesheet" href="/assets/css/lightGallery.css"/>
+        <link type="text/css" rel="stylesheet" href="/assets/css/style.css"/>
+        <link rel="stylesheet" href="/assets/css/jquery-ui.min.css">
+        <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+        <script src="/assets/js/socket.io.js"></script>
+        <script type="text/javascript" src="/assets/js/nodecopter-stream.js" charset="utf-8"></script>
+        <script type="text/javascript" src="/assets/js/nodecopter-client.js" charset="utf-8"></script>
+        <script src="/assets/js/jquery-ui.js"></script>
+        <!--<script src="/assets/js/lightGallery.js"></script>-->
+        <script src="/assets/js/jquery.als-1.7.min.js"></script>
+        <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/assets/js/jQueryRotate.js"></script>
+        <script src="/assets/js/socket.io.js"></script>
+        <script type="text/javascript" src="/assets/js/script.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,400,700,900' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div class="container backoffice">
+            <div class="row" style="overflow: hidden">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="col-md-12 col-xs-12 img-responsive nopadding" id="droneStream" style="width: 970px; height: 545px">
+                            </div>
+                            <!--<img class="col-md-12 col-xs-12 img-responsive nopadding" src="/assets/img/Login/bg.png"/>-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!--                        <div class="zoom">
+                                                    <div class="icons">
+                                                        <img src="/assets/img/backoffice/zoom+.png"/>
+                                                        <img src="/assets/img/backoffice/zoom-.png"/>
+                                                    </div>
+                                                </div>-->
+                        <div class="resume-info">
+                            <span class="vitesse">0 ms/s</span> | 
+                            <span class="altitude">0 m</span> | 
+                            <span class="batterie">0 %</span>
+                        </div>
+                        <!--                        <div class="map">
+                        
+                                                </div>-->
+                        <div class="col-md-12 onglets">
+                            <div class="single arrow inactive">
+                                <img src="/assets/img/backoffice/arrow.png"/>
+                            </div>
+                            <div class="single active information">
+                                <img src="/assets/img/backoffice/informations.png"/>
+                                INFORMATIONS
+                            </div>
+                            <div class="single inactive historique">
+                                <img src="/assets/img/backoffice/historique.png"/>
+                                HISTORIQUE
+                            </div>
+                            <div class="single inactive parcours">
+                                <img src="/assets/img/backoffice/parcours.png"/>
+                                PARCOURS
+                            </div>
+                        </div>
+                        <div class="action">
+                            <img src="/assets/img/backoffice/play.png" id="play"/>
+                            <img src="/assets/img/backoffice/stop.png" id="stop"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="shadow-dash"></div>
+                        <div class="dashboard col-md-12 col-xs-12">
+                            <div class="row">
+                                <div class="col-md-12 col-xs-12 information onglet-content">
+                                    <div class="col-md-2 col-xs-6 rubrique">
+                                        <div class="col-md-12 content">
+                                            <h2 class="col-md-offset-1 col-md-8">
+                                                VITESSE
+                                            </h2>
+                                            <div class="speed">
+                                                <div class="global-line">
+                                                    <div class="cursor" style="left: 0%;"></div>
+                                                    <div class="line" style="width: 0%;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="infos infos-vitesse">
+                                               0 m/s
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-xs-6 rubrique">
+                                        <div class="col-md-12 content">
+                                            <h2 class="col-md-offset-1 col-md-9">
+                                                ALTITUDE 
+                                            </h2>
+                                            <div class="altitude">
+                                                <div class="global-line">
+                                                    <div class="cursor" style="bottom: 0%;"></div>
+                                                    <div class="line" style="height: 0%;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="infos infos-altitude">
+                                                0 m
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-xs-12 rubrique inclinaison">
+                                        <div class="col-md-12 content">
+                                            <h2 class="col-md-offset-4 col-md-4">
+                                                INCLINAISON
+                                            </h2>
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <img src="/assets/img/backoffice/image1.png">
+                                                    <img id="fly" src="/assets/img/backoffice/image1.1.png"> 
+                                                    <div class="infos infos-inclinaison">
+                                                        0°
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <img src="/assets/img/backoffice/image3.png">
+                                                    <div class="infos infos-frontBack">
+                                                        0°
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <img src="/assets/img/backoffice/image2.png">
+                                                    <img id="fly2" src="/assets/img/backoffice/image2.1.png"> 
+                                                    <div class="infos infos-leftRight">
+                                                       0°
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-xs-12 rubrique">
+                                        <div class="col-md-12 content nopadding batterie">
+                                            <h2 class="col-md-offset-1 col-md-9">
+                                                BATTERIE
+                                            </h2>
+                                            <div class="infos infos-batterie">
+                                                39%
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 content nopadding distance">
+                                            <h2 class="col-md-11">
+                                                TEMPS DE VOL
+                                            </h2>
+                                            <div class="infos">
+                                                0 s
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 historique onglet-content" style="height: 181px;display:inline-block">
+                                    <div class="col-md-12 rubrique">
+                                        <div class="content">
+                                            <div class="als-container" id="demo2">
+                                                <span class="als-prev"><img src="/assets/img/fleche-video.png" alt="prev" title="previous" /></span>
+                                                <div class="als-viewport">
+                                                    <ul id="localVideo" class="als-wrapper">
+                                                        <li class="als-item" data-html="#video1" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
 
-    <!--parties a integrer-->
-    <script src="/dronestream/nodecopter-client.js" type="text/javascript" charset="utf-8"></script>
-</head>
-<body>
-    <h1 id="heading">Stream through a normal require("http").createServer</h1>
-    <div id="droneStream" style="width: 640px; height: 360px">   </div>
+                                                            <a href="#" target="_blank">
+                                                                <img src="/assets/img/video1.png" style="width:100%;float:left"><br>
+                                                                <p>Video 1</p>
+                                                                <p>01/12/14 à 19h</p>
+                                                            </a>
 
-    <script type="text/javascript" charset="utf-8">
-        new NodecopterStream(document.getElementById("droneStream"));
-    </script>
-</body>
+                                                        </li>
+                                                        <li class="als-item" data-html="#video2" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+
+                                                            <a href="#" target="_blank">
+                                                                <img src="/assets/img/video1.png" style="width:100%;float:left"><br>
+                                                                <p>Video 2</p>
+                                                                <p>01/12/14 à 19h</p>
+                                                            </a>
+
+                                                        </li>
+                                                        <li class="als-item" data-html="#video3" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+
+                                                            <a href="#">
+                                                                <img src="/assets/img/video1.png" style="width:100%;float:left"><br>
+                                                                <p>Video 3</p>
+                                                                <p>01/12/14 à 19h</p>
+                                                            </a>
+
+                                                        </li>
+                                                        <li class="als-item" data-html="#video4" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+
+                                                            <a href="#">
+                                                                <img src="/assets/img/video1.png" style="width:100%;float:left"><br>
+                                                                <p>Video 4</p>
+                                                                <p>01/12/14 à 19h</p>
+                                                            </a>
+
+                                                        </li>
+                                                        <li class="als-item" data-html="#video5" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+                                                            <a href="#">
+                                                                <img src="/assets/img/video1.png" style="width:100%;float:left"><br>
+                                                                <p>Video 5</p>
+                                                                <p>01/12/14 à 19h</p>
+                                                            </a>
+                                                        </li>
+                                                        <li class="als-item" data-html="#video5" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+                                                            <a href="#">
+                                                                <img src="/assets/img/video1.png" style="width:100%;float:left"><br>
+                                                                <p>Video 6</p>
+                                                                <p>001/12/14 à 19h</p>
+                                                            </a>
+                                                        </li>
+                                                        <li class="als-item" data-html="#video5" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+                                                            <a href="#">
+                                                                <img src="/assets/img/video1.png" style="width:100%;float:left"><br>
+                                                                <p>Video 7</p>
+                                                                <p>01/12/14 à 19h</p>
+                                                            </a>
+                                                        </li>
+                                                        <li class="als-item" data-html="#video5" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+                                                            <a href="#">
+                                                                <img src="/assets/img/video1.png" style="width:100%;float:left"><br>
+                                                                <p>Video 8</p>
+                                                                <p>01/12/14 à 19h</p>
+                                                            </a>
+                                                        </li>
+                                                        <li class="als-item" data-html="#video5" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+                                                            <a href="#">
+                                                                <img src="/assets/img/video1.png" style="width:100%;float:left"><br>
+                                                                <p>Video 9</p>
+                                                                <p>01/12/14 à 19h</p>
+                                                            </a>
+                                                        </li>
+                                                        <li class="als-item" data-html="#video5" data-sub-html="<div class='customHtml'><p>14/10/2014 Ã  19h</p></div>"> 
+                                                            <a href="#">
+                                                                <img src="/assets/img/video1.png" style="width:100%;float:left"><br>
+                                                                <p>Video 10</p>
+                                                                <p>01/12/14 à 19h</p>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <span class="als-next"><img src="/assets/img/fleche-video-d.png" alt="next" title="next" /></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 parcours onglet-content">
+                                    <div class="col-md-8 rubrique">
+                                        <div class="content col-md-12">
+                                            <div id="controleHaut">
+                                                <div class="plus" type="button" value="+" data-role="boutonTypeClick" data-type="1"></div>
+                                                <div class="moins" type="button" value="-" data-role="boutonTypeClick" data-type="2"></div>
+                                            </div>
+                                            <div id="cadrillage"></div>
+                                            <div class="echelle"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 rubrique">
+                                        <div class="content col-md-12">
+                                            <h2 class="col-md-offset-2 col-md-7">
+                                                RENSEIGNEMENTS
+                                            </h2>
+                                            <div class="subtitle-altitude">Altitude</div>
+                                            <div class="infos infos-altitude">
+                                                0.00 m
+                                            </div>
+                                            <div class="subtitle-rotation">Rotation</div>
+                                            <div class="infos infos-rotation">
+                                                0.00 °
+                                            </div>
+                                            <div id="slider-altitude" class="col-md-8 col-md-offset-2">
+                                            </div>
+                                            <div id="slider-rotation" class="col-md-8 col-md-offset-2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/js/point1.js"></script>
+    </body>
 </html>
